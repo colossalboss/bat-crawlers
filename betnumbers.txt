@@ -1,0 +1,17 @@
+ENC 19:00  15/07 Brentford - Preston 1   1.47
+NO1 19:00  15/07 Bodo/Glimt - Kristiansund 1   1.30
+NO1 19:00  15/07 Molde - Viking 1   1.35
+GR1 19:15  15/07 OFI - Olympiakos Piraeus 2   1.55
+ENP 20:00  15/07 Burnley - Wolves 2   1.90
+ENP 20:00 15/07 Manchester City -Bournemouth 1/1   1.47
+SE1 20:00 15/07 Djurgarden - Falkenbergs FF 1   1.53
+IT1  20:30 15/07 AC Milan - Parma 1   1.45
+SE1 20:30 15/07 AIK - IK Sirius FK 1X  1.35
+PT1 21:15 15/07 Braga - Belenenses 1   1.35
+GR1 21:30 15/07 AEK Athens - PAOK 1   2.32
+GH1 21:30 15/07 Young Boys - Servette FC 1   1.55
+ENP 22:15 15/07 Arsenal - Liverpool 2   1.91
+IT1   22:45 15/07 Lecce - Fiorentina 2   2.02
+IT1   22:45 15/07 Sassuolo - Juventus 2   1.65
+IT1   22:45 15/07 Roma - Verona 1   1.63
+PT1 23:30 15/07 FC Porto - Sporting CP 1   1.78

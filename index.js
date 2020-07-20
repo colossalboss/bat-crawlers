@@ -31,6 +31,7 @@ const saveToFile = (path, picks) => {
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
 
+    /*
     await page.goto('https://betadvice.me/1_5_betting-picks.html', {
         waitUntil: 'load',
         // Remove the timeout
@@ -53,7 +54,9 @@ const saveToFile = (path, picks) => {
         return picks;
     })
     saveToFile('./file.txt', picks);
+    */
 
+    /*
     // BETENSURED
     await page.goto('https://www.betensured.com/', {
         waitUntil: 'load',
@@ -81,7 +84,9 @@ const saveToFile = (path, picks) => {
 
     saveToFile('./betensured.txt', ensuredPicks)
     // console.log(ensuredPicks)
+    */
 
+    /*
     // BETSHOOT
     await page.goto('https://www.betshoot.com/football/accumulator-tips/', {
         waitUntil: 'load',
@@ -109,7 +114,9 @@ const saveToFile = (path, picks) => {
     });
     saveToFile('./betshoot.txt', betShootPicks);
     // console.log(betShootPicks);
+    */
 
+    /*
     // STATS24
     await page.goto('https://www.stats24.com/football', {
         waitUntil: 'load',
@@ -138,8 +145,10 @@ const saveToFile = (path, picks) => {
     })
     saveToFile('./stats24.txt', stats24Picks);
     // console.log(stats24Picks);
+    */
 
 
+    /*
     // ABRAHAMTIPS
     await page.goto('https://www.abrahamtips.com/', {
         waitUntil: 'load',
@@ -165,8 +174,10 @@ const saveToFile = (path, picks) => {
     })
     saveToFile('./abrahamtips.txt', abrahamTips);
     // console.log(abrahamTips);
+    */
 
 
+    /*
     // AFOOTBALLREPORT
     await page.goto('https://afootballreport.com/predictions/1X2-football-tips', {
         waitUntil: 'load',
@@ -199,7 +210,9 @@ const saveToFile = (path, picks) => {
     })
     saveToFile('./afootballreport.txt', aFootballReportPicks);
     // console.log(aFootballReportPicks);
+    */
 
+    /*
     // BETNUMBERS
     await page.goto('https://betnumbers.gr/free-betting-tips', {
         waitUntil: 'load',
@@ -234,7 +247,88 @@ const saveToFile = (path, picks) => {
     })
     saveToFile('./betnumbers.txt', betNumbers);
     console.log(betNumbers);
+    */
 
+    /*
+    // SOCCERVISTA
+    await page.goto('https://www.soccervista.com/bet.php', {
+        waitUntil: 'load',
+        // Remove the timeout
+        timeout: 0
+    });
+     
+    const soccerVistaPicks = await page.evaluate(() => {
+        let rows = document.querySelector('.main tbody').children;
+        let picks = []
+
+        for (let i = 0; i < rows.length; i++) {
+            let pick = { }
+            if (!rows[i].classList.contains('headupe')) {
+                let home = rows[i].children[2].textContent;
+                let away = rows[i].children[4].textContent;
+                let tip = rows[i].children[6].textContent;
+                pick.fixture = `${home} vs ${away}`
+                pick.tip = tip.includes(home) ? home : away;
+                picks.push(pick);
+            }
+        };
+        return picks;
+    })
+    saveToFile('./soccervista.txt', soccerVistaPicks);
+    console.log(soccerVistaPicks);
+    */
+
+    // await page.goto('https://www.olbg.com/betting-tips/Football/1', {
+    //     waitUntil: 'load',
+    //     // Remove the timeout
+    //     timeout: 0
+    // });
+     
+    // const OLGPicks = await page.evaluate(() => {
+    //     let rows = document.querySelector("#tipsListingContainer-Match tbody").children;
+    //     let picks = []
+
+    //     for (let i = 0; i < rows.length; i++) {
+    //         if (rows[i].classList.contains('tip-row', 'odds-row')) {
+    //             let pick = { }
+    //             let today = `${new Date(Date.now()).toDateString().split(' ')[1]} ${(Number(new Date(Date.now()).toDateString().split(' ')[2]) + 1).toString()}`;
+    //             let matchDay = rows[i].children[1].children[2].children[0].textContent.trim();
+
+    //             if (today === matchDay) {
+    //                 pick.fixture = rows[i].children[1].children[0].textContent;
+    //                 pick.tip = rows[i].children[2].children[0].textContent.trim();
+    //                 pick.accuracy = rows[i].children[4].children[1].textContent.trim();
+    //             }
+    //             if (pick.fixture && pick.tip) {
+    //                 picks.push(pick);
+    //             }
+    //         }
+    //     };
+    //     return picks;
+    // })
+    // saveToFile('./olgpicks.txt', OLGPicks);
+    // console.log(OLGPicks);
+    await page.goto('https://confirmbets.com/Free-Football-Predictions', {
+        waitUntil: 'load',
+        // Remove the timeout
+        timeout: 0
+    });
+
+    const confirmBets = await page.evaluate(() => {
+        let rows = document.querySelector("#PredictionDetails tbody").children;
+        console.log({rows, document})
+        window.rows = rows
+        let picks = []
+        for(let i = 1; i < rows.length; i++) {
+            pick = {}
+            pick.fixture = rows[i].children[3].textContent;
+            pick.tip = rows[i].children[4].textContent;
+            picks.push(pick)
+        }
+        return picks;
+    })
+    saveToFile('./olgpicks.txt', confirmBets);
+    console.log(confirmBets);
 
     await browser.close();
 })();
